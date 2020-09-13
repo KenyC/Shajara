@@ -15,19 +15,19 @@ Shajara allows you to draw your trees in a simple GUI. The tree is then automati
 # Use
 	
 In the display:
-	* Left Click   on node to insert daughter nodes or sisters
-	* Right Click  on node to remove node's daughters
-	* Middle Click (i.e. wheel click) to drag display 
-	* Mouse Wheel to zoom in and out
-	* Ctrl+Left Click to select node's label in the text field on the right
+   - Left Click   on node to insert daughter nodes or sisters
+   - Right Click  on node to remove node's daughters
+   - Middle Click (i.e. wheel click) to drag display 
+   - Mouse Wheel to zoom in and out
+   - Ctrl+Left Click to select node's label in the text field on the right
 
 In the text field:
-	* Press Enter to copy to clipboard
-	* Press Tab to move to next node 
+   - Press Enter to copy to clipboard
+   - Press Tab to move to next node 
 
 Buttons:
-	* C : clear node labels
-	* I : if you copied a string representation of a tree from another program, imports the tree into Shajara (only QTree for now).
+   - C : clear node labels
+   - I : if you copied a string representation of a tree from another program, imports the tree into Shajara (only QTree for now).
 
 
 # Installation
