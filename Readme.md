@@ -1,7 +1,7 @@
 Shajara
 =================
 
-Shajara allows you to draw your trees in a simple GUI. The tree is then automatically to a string representation for QTree, forest and other LateX tree-drawing packages.
+Shajara allows you to draw your trees in a simple GUI. The tree is then automatically converted to a string representation for QTree, forest and other LateX tree-drawing packages.
 (It is a port of the earlier TreeMaker to Qt, with a lot of improvements)
 
 
@@ -23,11 +23,15 @@ In the display:
 
 In the text field:
    - Press Enter to copy to clipboard
-   - Press Tab to move to next node 
+   - Press Tab to move to next node (next in the sense of reverse Polish notation, i.e. ascendants follow descendants)
 
 Buttons:
    - C : clear node labels
    - I : if you copied a string representation of a tree from another program, imports the tree into Shajara (only QTree for now).
+
+# Options
+
+Two customizations files are available in the "options/" folder. They are "options/style/style.json" (for tree display style) and "options/behavior/behavior.json" (for button mapping, experimental).
 
 
 # Installation
