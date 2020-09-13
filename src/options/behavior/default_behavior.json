@@ -1,0 +1,13 @@
+{
+	"view": {
+		"drag"        : "middle",
+		"add_node"    : "left", 
+		"remove_node" : "right", 
+		"select_node" : ["ctrl", "left"]
+	},
+
+	"text": {
+		// in the text field, pressing "Enter" copies to clip board
+		"return_copies": false
+	}
+}

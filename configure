@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir /etc/opt/shajara
+cp -r options /etc/opt/shajara/

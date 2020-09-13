@@ -1,0 +1,23 @@
+{
+	"branches" : {
+		"width" : 4,
+		"color" : [255, 255, 255]
+	},
+
+	"nodes" : {
+		"radius"      : 8,
+		// how far from the node does a click counts as clicking the node
+		"sensitivity" : 10, 
+		"color"       : [255, 0, 0]
+	},
+
+	"labels" : {
+		"color"            : [0, 255, 0],
+		"font_size"        : 15,
+		"distance_to_node" : 50
+	},
+
+	"background" : {
+		"color" : [0, 0, 0]
+	}
+}
