@@ -46,9 +46,10 @@ class Tree:
 		else:
 			iFather = self.father(idx)
 			
+
 			self.insert_child(idx, labelR, [idx])
 
-			if iFather != -1:
+			if iFather is not None:
 				self.children[iFather] = [idx if x == idx + 1 else x for x in self.children[iFather]]
 
 			self.labels.append(labelL)
