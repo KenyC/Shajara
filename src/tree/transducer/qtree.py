@@ -1,6 +1,11 @@
 from .transducer import Transducer
 from tree import Tree
 
+# %%
+from tree.transducer import Transducer
+from tree import Tree
+
+# %%
 
 DEFAULT_BLANK_QTREE = "\t"
 
@@ -67,7 +72,7 @@ class QTreeTrans(Transducer):
 					topElem = stack.pop()
 
 				elemTrees[2] = elemTrees[2].labels[0]
-				lastTree = Tree.fromTrees(elemTrees[:-1][::-1], label = elemTrees[2])
+				lastTree = Tree.merge_trees(elemTrees[:-1][::-1], label = elemTrees[2])
 				stack.append(lastTree)
 
 			else:
@@ -78,3 +83,4 @@ class QTreeTrans(Transducer):
 		return lastTree
 
 
+# %%

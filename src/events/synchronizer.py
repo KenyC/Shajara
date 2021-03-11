@@ -32,7 +32,7 @@ class SyncTree:
 
 	def update_view(self):
 		""" Redraws tree """
-		self.tree.construct(ROOT_POS)
+		self.tree.compute_display_positions(ROOT_POS)
 		self.view.scene.update()
 
 	def select_node(self, node_idx):

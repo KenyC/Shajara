@@ -20,8 +20,7 @@ class Tree:
 		else:
 			self.children = children
 
-	def fromTrees(children, label = ""):
-		
+	def merge_trees(children, label = ""):
 		sums = [1]
 
 		for child in children[:-1]:
@@ -147,7 +146,7 @@ class Tree:
 		for c in self.children[idx]:
 			self.show(c, space + 1)
 
-	def construct(self, pos, **params):
+	def compute_display_positions(self, pos, **params):
 		"""
 		Computes position of nodes if root is at coordinate "pos"
 		Display rules:
@@ -158,10 +157,12 @@ class Tree:
 			- Between adjacent sister nodes n1 and n2, there must be a gap of at least the width of n1 and the width of n2 (prenvents overlap)
 		"""
 
-		defaults = {"nodeWidth": 60., "height": 100.}
+		defaults = {"node_width": 60., "height_branch": 100., "node_widths": None, "height_branches": None}
 		defaults.update(params)
+		same_node_width  = defaults["node_widths"]     is None
+		same_node_height = defaults["height_branches"] is None
 
-		### FORWARD PASS
+		### FIRST PASS
 		# Computes the width of all subtrees
 		# Computes the position of node with respect to left of the subtree it spans (mean position of children)
 		# Looping from end to beginning makes sure we get to children before their mothers
@@ -169,8 +170,12 @@ class Tree:
 		self.loc_in_segment = [0. for _ in self.labels]
 		for i in range(self.n - 1, -1, -1):
 			if not self.children[i]:
-				self.lgths[i]          = defaults["nodeWidth"]
-				self.loc_in_segment[i] = defaults["nodeWidth"] / 2
+				if same_node_width:
+					self.lgths[i]          = defaults["node_width"]
+					self.loc_in_segment[i] = defaults["node_width"] / 2
+				else:
+					self.lgths[i]          = defaults["node_widths"][i]
+					self.loc_in_segment[i] = defaults["node_widths"][i] / 2
 			else:
 				running_sum_length     = 0.
 				running_sum_child_pos  = 0.
@@ -184,7 +189,7 @@ class Tree:
 				self.loc_in_segment[i] = running_sum_child_pos  / n_children
 
 
-
+		### SECOND PASS
 		# Computes node position 
 		# Initialization to the position of root
 		self.positions = [pos for i in range(self.n)]
@@ -196,9 +201,14 @@ class Tree:
 				# x_position of left edge
 				left_edge = x_father - self.loc_in_segment[i]
 
+				if same_node_height:
+					height = defaults["height_branch"]
+				else:
+					height = defaults["height_branches"][i] + defaults["height_branch"]
+
 				# Compute position of nodes 
 				for c in self.children[i]:
-					self.positions[c] = (left_edge + self.loc_in_segment[c], y_father + defaults["height"])
+					self.positions[c] = (left_edge + self.loc_in_segment[c], y_father + height)
 					left_edge += self.lgths[c]
 
 
